@@ -1,0 +1,6 @@
+langchain-community
+langchain-nvidia-ai-endpoints
+chromadb
+numpy
+python-dotenv
+nltk

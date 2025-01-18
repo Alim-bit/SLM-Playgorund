@@ -1,0 +1,107 @@
+ You are AWS Plugin 
+Answer the question based only on the following context:
+
+"Blank function (Python)
+
+The project source includes function code and supporting resources:
+
+function - A Python function.
+
+template.yml - An AWS CloudFormation template that creates an application.
+
+1-create-bucket.sh, 2-build-layer.sh, etc. - Shell scripts that use the AWS CLI to deploy and manage the application.
+
+Use the following instructions to deploy the sample application.
+
+Requirements
+
+Python 3.11. Sample also works with Python 3.9.
+
+The Bash shell. For Linux and macOS, this is included by default. In Windows 10, you can install the Windows Subsystem for Linux to get a Windows-integrated version of Ubuntu and Bash.
+
+The AWS CLI v1.17 or newer.
+
+Setup
+
+Download or clone this repository.
+
+git clone https://github.com/awsdocs/aws-lambda-developer-guide.git
+cd aws-lambda-developer-guide/sample-apps/blank-python
+
+To create a new bucket for deployment artifacts, run 1-create-bucket.sh.
+
+./1-create-bucket.sh
+
+Example output:
+
+make_bucket: lambda-artifacts-a5e491dbb5b22e0d ./1-create-bucket.sh
+
+Example output:
+
+make_bucket: lambda-artifacts-a5e491dbb5b22e0d
+
+To build a Lambda layer that contains the function's runtime dependencies, run 2-build-layer.sh. Packaging dependencies in a layer reduces the size of the deployment package that you upload when you modify your code.
+
+./2-build-layer.sh
+
+Deploy
+
+To deploy the application, run 3-deploy.sh.
+
+./3-deploy.sh
+
+Example output:
+
+Uploading to e678bc216e6a0d510d661ca9ae2fd941  9519118 / 9519118.0  (100.00%)
+Successfully packaged artifacts and wrote output template to file out.yml.
+Waiting for changeset to be created..
+Waiting for stack create/update to complete
+Successfully created/updated stack - blank-python
+
+This script uses AWS CloudFormation to deploy the Lambda functions and an IAM role. If the AWS CloudFormation stack that contains the resources already exists, the script updates it with any changes to the template or function code.
+
+Test
+
+To invoke the function, run 4-invoke.sh.
+
+./4-invoke.sh blank-nodejs$ ./1-create-bucket.sh
+make_bucket: lambda-artifacts-a5e491dbb5b22e0d
+
+To build a Lambda layer that contains the function's runtime dependencies, run 2-build-layer.sh. Packaging dependencies in a layer reduces the size of the deployment package that you upload when you modify your code.
+
+blank-nodejs$ ./2-build-layer.sh
+
+Deploy
+
+To deploy the application, run 3-deploy.sh.
+
+blank-nodejs$ ./3-deploy.sh
+added 16 packages from 18 contributors and audited 18 packages in 0.926s
+added 17 packages from 19 contributors and audited 19 packages in 0.916s
+Uploading to e678bc216e6a0d510d661ca9ae2fd941  2737254 / 2737254.0  (100.00%)
+Successfully packaged artifacts and wrote output template to file out.yml.
+Waiting for changeset to be created..
+Waiting for stack create/update to complete
+Successfully created/updated stack - blank-nodejs blank-ruby$ ./1-create-bucket.sh
+make_bucket: lambda-artifacts-a5e491dbb5b22e0d
+
+To build a Lambda layer that contains the function's runtime dependencies, run 2-build-layer.sh. The script installs Bundler and uses it to install the application's libraries in a folder named lib.
+
+blank-ruby$ ./2-build-layer.sh
+
+The lib folder is used to create a Lambda layer during deployment. Packaging dependencies in a layer reduces the size of the deployment package that you upload when you modify your code.
+
+Deploy
+
+To deploy the application, run 3-deploy.sh.
+
+blank-ruby$ ./3-deploy.sh
+Uploading to e678bc216e6a0d510d661ca9ae2fd941  2737254 / 2737254.0  (100.00%)
+Successfully packaged artifacts and wrote output template to file out.yml.
+Waiting for changeset to be created..
+Waiting for stack create/update to complete
+Successfully created/updated stack - blank-ruby"
+
+---
+
+Answer the question based on the above context it should in first person: "How do I package a Python application for AWS Lambda?"
